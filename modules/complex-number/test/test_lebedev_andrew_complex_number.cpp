@@ -32,12 +32,12 @@ TEST(Lebedev_Andrew_ComplexNumberTest, testMultipleAssignment) {
 }
 
 TEST(Lebedev_Andrew_ComplexNumberTest, testSubAfterMult) {
-ComplexNumber z1(1, 1);
-ComplexNumber z2(3, 4);
-ComplexNumber z3(2, 1);
-ComplexNumber z4(-3, 6);
+     ComplexNumber z1(1, 1);
+     ComplexNumber z2(3, 4);
+     ComplexNumber z3(2, 1);
+     ComplexNumber z4(-3, 6);
 
-ASSERT_EQ(z4, z1 * z2 - z3);
+     ASSERT_EQ(z4, z1 * z2 - z3);
 }
 
 TEST(Lebedev_Andrew_ComplexNumberTest, testMultAfterSub) {
