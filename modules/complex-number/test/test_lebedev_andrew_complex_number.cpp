@@ -24,11 +24,11 @@ TEST(Lebedev_Andrew_ComplexNumberTest, testMultipleAssignment) {
      im = 8;
      z1 = z2 = z3;
 
-     ASSERT_EQ(z1, z3);
-     ASSERT_EQ(z2, z3);
+     ASSERT_EQ(z3, z1);
+     ASSERT_EQ(z3, z2);
      ASSERT_EQ(z1, z2);
-     ASSERT_EQ(z1.getRe(), re);
-     ASSERT_EQ(z1.getIm(), im);
+     ASSERT_EQ(re, z1.getRe());
+     ASSERT_EQ(im, z1.getIm());
 }
 
 TEST(Lebedev_Andrew_ComplexNumberTest, testSubAfterMult) {
