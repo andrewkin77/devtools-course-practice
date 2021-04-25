@@ -99,7 +99,7 @@ int depositCalc::getResult() {
 }
 
 void depositCalc::calculate() {
-    if (!day || !month || !year || !month
+    if (!day || !month || !year
         || !depositSum || !interestRate
         || !(numberOfMonths || numberOfDays)) {
         throw "Parameters not set";
