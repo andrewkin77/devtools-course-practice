@@ -26,12 +26,12 @@ class  depositCalc {
     void setInterestRate(double _interestRate);
     void setDate(int _day, int _month, int _year);
     void setCapitalization(int _capitalization);
-    int getDepositSum();
-    int getNumberOfDays();
-    int getNumberOfMonths();
-    double getInterestRate();
-    int getCapitalization();
-    int getResult();
+    int getDepositSum() const;
+    int getNumberOfDays() const;
+    int getNumberOfMonths() const;
+    double getInterestRate() const;
+    int getCapitalization() const;
+    int getResult() const;
     void calculate();
 };
 #endif  // MODULES_DEPOSIT_CALC_INCLUDE_DEPOSITCALC_H_

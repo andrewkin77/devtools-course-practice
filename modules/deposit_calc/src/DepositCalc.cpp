@@ -74,27 +74,27 @@ void depositCalc::setCapitalization(int _capitalization) {
     capitalization = _capitalization;
 }
 
-int depositCalc::getDepositSum() {
+int depositCalc::getDepositSum() const {
     return depositSum;
 }
 
-int depositCalc::getNumberOfDays() {
+int depositCalc::getNumberOfDays() const {
     return numberOfDays;
 }
 
-int depositCalc::getNumberOfMonths() {
+int depositCalc::getNumberOfMonths() const {
     return numberOfMonths;
 }
 
-double depositCalc::getInterestRate() {
+double depositCalc::getInterestRate() const {
     return interestRate;
 }
 
-int depositCalc::getCapitalization() {
+int depositCalc::getCapitalization() const {
     return capitalization;
 }
 
-int depositCalc::getResult() {
+int depositCalc::getResult() const {
     return result;
 }
 
