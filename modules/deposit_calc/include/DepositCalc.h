@@ -17,9 +17,13 @@ class  depositCalc {
     std::vector<int> daysInMonths;
     int capitalization;
     int result;
+    void initVector();
 
  public:
     depositCalc();
+    depositCalc(int _depositSum, int _numberOfMonths,
+        double _interestRate, int _day, int _month, int _year,
+        int _capitalization = 0);
     void setDepositSum(int _depositSum);
     void setNumberOfMonths(int _numberOfMonths);
     void setNumberOfDays(int _numberOfDays);

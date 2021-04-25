@@ -4,6 +4,7 @@
 #include <utility>
 #include <vector>
 #include <iostream>
+
 #include "include/DepositCalc.h"
 
 TEST(DepositCalc, setDepositSum) {
@@ -69,6 +70,11 @@ TEST(DepositCalc, setCapitalization) {
 TEST(DepositCalc, setBadCapitalization) {
     depositCalc x;
     ASSERT_ANY_THROW(x.setCapitalization(-3));
+}
+
+TEST(DepositCalc, testParamConstructor) {
+    ASSERT_NO_THROW(depositCalc x(300, 12, 2,
+        4, 6, 2021, 1));
 }
 
 TEST(DepositCalc, calcTestNoDeposit) {

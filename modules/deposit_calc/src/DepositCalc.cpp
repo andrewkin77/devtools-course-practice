@@ -3,6 +3,7 @@
 #include <utility>
 #include <vector>
 #include <iostream>
+
 #include "include/DepositCalc.h"
 
 depositCalc::depositCalc() {
@@ -14,6 +15,22 @@ depositCalc::depositCalc() {
     month = 0;
     year = 0;
     capitalization = 0;
+    daysInMonths.resize(12);
+    initVector();
+}
+
+depositCalc::depositCalc(int _depositSum, int _numberOfMonths,
+        double _interestRate, int _day, int _month, int _year,
+        int _capitalization) {
+    initVector();
+    setDepositSum(_depositSum);
+    setNumberOfMonths(_numberOfMonths);
+    setInterestRate(_interestRate);
+    setDate(_day, _month, _year);
+    setCapitalization(_capitalization);
+}
+
+void depositCalc::initVector() {
     daysInMonths.resize(12);
     for (int i = 0; i < 12; i++) {
         if (i == 4 || i == 6 || i == 9 || i == 11)
@@ -73,6 +90,7 @@ void depositCalc::setCapitalization(int _capitalization) {
     }
     capitalization = _capitalization;
 }
+
 
 int depositCalc::getDepositSum() const {
     return depositSum;
