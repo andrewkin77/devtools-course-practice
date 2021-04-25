@@ -10,6 +10,10 @@ TEST(DepositCalc, setDepositSum) {
     depositCalc x;
     x.setDepositSum(300);
     ASSERT_EQ(300, x.getDepositSum());
+}
+
+TEST(DepositCalc, setBadDepositSum) {
+    depositCalc x;
     ASSERT_ANY_THROW(x.setDepositSum(-2));
 }
 
@@ -17,33 +21,53 @@ TEST(DepositCalc, setNumberOfMonths) {
     depositCalc x;
     x.setNumberOfMonths(25);
     ASSERT_EQ(25, x.getNumberOfMonths());
-    ASSERT_ANY_THROW(x.setNumberOfMonths(-1));
+}
+
+TEST(DepositCalc, setBadNumberOfMonths) {
+    depositCalc x;
+    ASSERT_ANY_THROW(x.setNumberOfMonths(-12));
 }
 
 TEST(DepositCalc, setNumberOfDays) {
     depositCalc x;
     x.setNumberOfDays(267);
     ASSERT_EQ(267, x.getNumberOfDays());
-    ASSERT_ANY_THROW(x.setNumberOfDays(-1));
+}
+
+TEST(DepositCalc, setBadNumberOfDays) {
+    depositCalc x;
+    ASSERT_ANY_THROW(x.setNumberOfDays(-20));
 }
 
 TEST(DepositCalc, setInterestRate) {
     depositCalc x;
     x.setInterestRate(8);
     ASSERT_EQ(8, x.getInterestRate());
+}
+
+TEST(DepositCalc, setBadInterestRate) {
+    depositCalc x;
     ASSERT_ANY_THROW(x.setInterestRate(-12));
 }
 
 TEST(DepositCalc, setDate) {
     depositCalc x;
     ASSERT_NO_THROW(x.setDate(8, 12, 2021));
+}
+
+TEST(DepositCalc, setBadDate) {
+    depositCalc x;
     ASSERT_ANY_THROW(x.setDate(-12, 13 , -1));
 }
 
 TEST(DepositCalc, setCapitalization) {
     depositCalc x;
-    ASSERT_NO_THROW(x.setCapitalization(2));
+    x.setCapitalization(2);
     ASSERT_EQ(2, x.getCapitalization());
+}
+
+TEST(DepositCalc, setBadCapitalization) {
+    depositCalc x;
     ASSERT_ANY_THROW(x.setCapitalization(-3));
 }
 
