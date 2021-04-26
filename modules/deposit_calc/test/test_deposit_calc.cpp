@@ -2,8 +2,7 @@
 
 #include <gtest/gtest.h>
 #include <utility>
-#include <vector>
-#include <iostream>
+#include <tuple>
 
 #include "include/DepositCalc.h"
 
@@ -109,17 +108,7 @@ TEST(DepositCalc, calcTestNoDuration) {
     ASSERT_ANY_THROW(x.calculate());
 }
 
-TEST(DepositCalc, calcTest1) {
-    depositCalc x;
-    x.setDepositSum(700000);
-    x.setDate(12, 07, 2021);
-    x.setInterestRate(8);
-    x.setNumberOfMonths(12);
-    ASSERT_NO_THROW(x.calculate());
-    ASSERT_EQ(756000, x.getResult());
-}
-
-TEST(DepositCalc, calcTest2) {
+TEST(DepositCalc, calcTestNumberOfDays) {
     depositCalc x;
     x.setDepositSum(700000);
     x.setDate(12, 07, 2021);
@@ -129,69 +118,33 @@ TEST(DepositCalc, calcTest2) {
     ASSERT_EQ(714268, x.getResult());
 }
 
-TEST(DepositCalc, calcTest3) {
+typedef testing::TestWithParam<std::tuple<int, int, int, int,
+    double, int, int, int>> Parameterized;
+TEST_P(Parameterized, calcTest) {
+    int depositSum = std::get<0>(GetParam());
+    int day = std::get<1>(GetParam());
+    int month = std::get<2>(GetParam());
+    int year = std::get<3>(GetParam());
+    double interestRate = std::get<4>(GetParam());
+    int numberOfMonths = std::get<5>(GetParam());
+    int capitalization = std::get<6>(GetParam());
+    int expected = std::get<7>(GetParam());
     depositCalc x;
-    x.setDepositSum(200000);
-    x.setDate(31, 07, 2021);
-    x.setInterestRate(4.5);
-    x.setNumberOfMonths(11);
+    x.setDepositSum(depositSum);
+    x.setDate(day, month, year);
+    x.setInterestRate(interestRate);
+    x.setNumberOfMonths(numberOfMonths);
+    x.setCapitalization(capitalization);
     ASSERT_NO_THROW(x.calculate());
-    ASSERT_EQ(208260, x.getResult());
+    ASSERT_EQ(expected, x.getResult());
 }
 
-TEST(DepositCalc, calcTest4) {
-    depositCalc x;
-    x.setDepositSum(300000);
-    x.setDate(10, 07, 2021);
-    x.setInterestRate(7);
-    x.setNumberOfMonths(2);
-    x.setCapitalization(1);
-    ASSERT_NO_THROW(x.calculate());
-    ASSERT_EQ(303588, x.getResult());
-}
-
-TEST(DepositCalc, calcTest5) {
-    depositCalc x;
-    x.setDepositSum(750000);
-    x.setDate(10, 07, 2021);
-    x.setInterestRate(3);
-    x.setNumberOfMonths(13);
-    x.setCapitalization(3);
-    ASSERT_NO_THROW(x.calculate());
-    ASSERT_EQ(774781, x.getResult());
-}
-
-TEST(DepositCalc, calcTes6) {
-    depositCalc x;
-    x.setDepositSum(400000);
-    x.setDate(10, 07, 2021);
-    x.setInterestRate(5);
-    x.setNumberOfMonths(4);
-    x.setCapitalization(2);
-    ASSERT_NO_THROW(x.calculate());
-    ASSERT_EQ(406794, x.getResult());
-}
-
-TEST(DepositCalc, calcTes7) {
-    depositCalc x;
-    x.setDepositSum(500000);
-    x.setDate(9, 06, 2021);
-    x.setInterestRate(7);
-    x.setNumberOfMonths(5);
-    x.setCapitalization(2);
-    ASSERT_NO_THROW(x.calculate());
-    ASSERT_EQ(514879, x.getResult());
-}
-
-TEST(DepositCalc, calcTes8) {
-    depositCalc x;
-    x.setDepositSum(500000);
-    x.setDate(9, 06, 2021);
-    x.setInterestRate(7);
-    x.setNumberOfMonths(25);
-    x.setCapitalization(4);
-    ASSERT_NO_THROW(x.calculate());
-    ASSERT_EQ(575744, x.getResult());
-}
-
-
+INSTANTIATE_TEST_CASE_P(/**/, Parameterized, ::testing::Values(
+     std::make_tuple(700000, 12, 07, 2021, 8, 12, 0, 756000),
+     std::make_tuple(200000, 31, 07, 2021, 4.5, 11, 0, 208260),
+     std::make_tuple(300000, 10, 07, 2021, 7, 2, 1, 303588),
+     std::make_tuple(750000, 10, 07, 2021, 3, 13, 3, 774781),
+     std::make_tuple(400000, 10, 07, 2021, 5, 4, 2, 406794),
+     std::make_tuple(500000, 9, 06, 2021, 7, 5, 2, 514879),
+     std::make_tuple(500000, 9, 06, 2021, 7, 25, 4, 575744)
+));
