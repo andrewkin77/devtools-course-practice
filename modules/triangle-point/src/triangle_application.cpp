@@ -39,7 +39,8 @@ std::string TriangleApplication::operator()(int argc, const char ** argv) {
 std::string TriangleApplication::getHelp(const std::string& appname) {
         return "\nThis is a triangle-point application.\n" \
         "Please provide arguments in the following format:\n\n"
-        "$ " + appname + " <val_1> <val_2> ... <val_8> \n\n";
+        "$ " + appname + " <val_1> <val_2> ... <val_8> \n\n"
+        "Where all arguments are real numbers.\n";
 }
 
 
