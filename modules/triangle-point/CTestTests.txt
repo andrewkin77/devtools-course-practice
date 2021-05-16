@@ -75,3 +75,11 @@ add_test(
 set_tests_properties (${prefix}_can_Parse_Double_2 PROPERTIES
     PASS_REGULAR_EXPRESSION "Point is outside."
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Parse_Negative
+    COMMAND ${APPLICATION} 2 5 0 5 -19 77 -5 2.7
+)
+set_tests_properties (${prefix}_can_Parse_Negative PROPERTIES
+    PASS_REGULAR_EXPRESSION "Point is outside."
+    LABELS "${MODULE}")
