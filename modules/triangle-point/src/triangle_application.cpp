@@ -1,6 +1,8 @@
 // Copyright 2021 Lebedev Andrew
 
 #include <algorithm>
+#include <utility>
+#include <stdexcept>
 #include <iterator>
 #include <string>
 #include <cstring>
