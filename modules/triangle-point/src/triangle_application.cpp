@@ -39,8 +39,10 @@ std::string TriangleApplication::operator()(int argc, const char ** argv) {
 std::string TriangleApplication::getHelp(const std::string& appname) {
         return "\nThis is a triangle-point application.\n" \
         "Please provide arguments in the following format:\n\n"
-        "$ " + appname + " <val_1> <val_2> ... <val_8> \n\n"
-        "Where all arguments are real numbers.\n";
+        "$ " + appname + " <x1> <y1> ... <x4> <y4> \n\n"
+        "First three pairs are coordinates of triangle's vertices\n"
+        "Last two arguments are point coordinates\n"
+        "All arguments are real numbers.\n";
 }
 
 
